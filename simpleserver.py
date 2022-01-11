@@ -9,16 +9,24 @@ class MyWebpage(http.server.BaseHTTPRequestHandler):
         s.send_header('Content-Type', 'text/html')
         s.end_headers()
         html = """
-                <!DOCTYPE html>
-                <html>
-                    <head><title>Backend!</title></head>
-                <body>
-                    <h1>Backend demo page!</h1>
-                    <p>Incoming URL="""+s.path+"""</p>
-                    <p>Current time: """+str(datetime.datetime.now())+"""</p>
-                </body>
-                </html>
-                """
+        <!DOCTYPE html>
+        <html>
+          <head>
+            <title>Backend!</title>
+            <style>
+              body { background-color: black; color: #77FF77; }
+              a { color: yellow; }
+              h1 {color: #55FFFF; }
+            </style>
+          </head>
+          <body>
+            <h1>Hello from the backend python test page.</h1>
+            <p>Incoming URL: <font color=#FFFFFF><b>"""+s.path+"""</b></font></p>
+            <p>Current time: """+str(datetime.datetime.now())+"""</p>
+            <p>If this is not what you were expecting to see, please contact your sysadmin.</p>
+          </body>
+        </html>
+        """
         s.wfile.write(html.encode())
 
 if __name__ == '__main__':
